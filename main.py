@@ -1,4 +1,3 @@
-
 import csv
 from collections import defaultdict, Counter
 
@@ -34,6 +33,16 @@ def most_frequent_endpoint(logs):
     endpoint_counts = Counter(log["endpoint"] for log in logs)
     most_common = endpoint_counts.most_common(1)
     return most_common[0] if most_common else ("-", 0)
+
+def detect_suspicious_activity(logs):
+    """
+    Detect IPs with suspicious failed login attempts.
+    """
+    failed_attempts = defaultdict(int)
+    for log in logs:
+        if log["status"] == "401" or "Invalid credentials" in log["message"]:
+            failed_attempts[log["ip"]] += 1
+    return [(ip, count) for ip, count in failed_attempts.items() if count > FAILED_LOGIN_THRESHOLD]
 
 def save_to_csv(ip_requests, endpoint, suspicious_activity, file_name):
     """
