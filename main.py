@@ -26,3 +26,11 @@ def count_requests_by_ip(logs):
     """
     ip_counts = Counter(log["ip"] for log in logs)
     return sorted(ip_counts.items(), key=lambda x: x[1], reverse=True)
+
+def most_frequent_endpoint(logs):
+    """
+    Identify the most frequently accessed endpoint.
+    """
+    endpoint_counts = Counter(log["endpoint"] for log in logs)
+    most_common = endpoint_counts.most_common(1)
+    return most_common[0] if most_common else ("-", 0)
