@@ -77,3 +77,24 @@ def display_results(ip_requests, endpoint, suspicious_activity):
     for ip, count in suspicious_activity:
         print(f"{ip:<20}{count}")
     print()
+
+def main():
+    # File paths
+    log_file = "sample.log"
+    output_csv = "log_analysis_results.csv"
+
+    # Parse log file
+    logs = parse_log_file(log_file)
+
+    # Analyze data
+    ip_requests = count_requests_by_ip(logs)
+    endpoint = most_frequent_endpoint(logs)
+    suspicious_activity = detect_suspicious_activity(logs)
+
+    # Display and save results
+    display_results(ip_requests, endpoint, suspicious_activity)
+    save_to_csv(ip_requests, endpoint, suspicious_activity, output_csv)
+    print(f"Results saved to {output_csv}")
+
+if __name__ == "__main__":
+    main()
