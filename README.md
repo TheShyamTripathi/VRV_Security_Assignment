@@ -20,8 +20,8 @@ This is a Python-based tool designed to analyze server log files and provide val
 1. Clone the repository or download the Python script.
 
     ```bash
-    git clone https://github.com/TheShyamTripathi/log-analysis.git
-    cd log-analysis
+    git clone https://github.com/TheShyamTripathi/VRV_Security_Assignment_Log_Analaysis_Tool.git
+    cd VRV_Security_Assignment_Log_Analaysis_Tool
     ```
 
 2. Place your server log file in the same directory as the script or provide the path to it in the script.
@@ -105,7 +105,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgements
 
 - The script uses basic Python modules like `csv`, `re`, and `collections.Counter` for log parsing and data manipulation.
-- Thank you to [yourname] for creating this tool.
+- Thank you to Shyam Tripathi for creating this tool.
 
 ---
 
