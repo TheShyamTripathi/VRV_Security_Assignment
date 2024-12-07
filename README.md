@@ -20,7 +20,7 @@ This is a Python-based tool designed to analyze server log files and provide val
 1. Clone the repository or download the Python script.
 
     ```bash
-    git clone https://github.com/your-repository/log-analysis.git
+    git clone https://github.com/TheShyamTripathi/log-analysis.git
     cd log-analysis
     ```
 
