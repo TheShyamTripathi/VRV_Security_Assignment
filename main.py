@@ -34,3 +34,27 @@ def most_frequent_endpoint(logs):
     endpoint_counts = Counter(log["endpoint"] for log in logs)
     most_common = endpoint_counts.most_common(1)
     return most_common[0] if most_common else ("-", 0)
+
+def save_to_csv(ip_requests, endpoint, suspicious_activity, file_name):
+    """
+    Save the results to a CSV file.
+    """
+    with open(file_name, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+
+        # Write IP Requests
+        writer.writerow(["IP Address", "Request Count"])
+        writer.writerows(ip_requests)
+        writer.writerow([])  # Blank line for separation
+
+        # Write Most Accessed Endpoint
+        writer.writerow(["Most Frequently Accessed Endpoint"])
+        writer.writerow(["Endpoint", "Access Count"])
+        writer.writerow(endpoint)
+        writer.writerow([])
+
+        # Write Suspicious Activity
+        writer.writerow(["Suspicious Activity Detected"])
+        writer.writerow(["IP Address", "Failed Login Count"])
+        writer.writerows(suspicious_activity)
+
