@@ -19,3 +19,10 @@ def parse_log_file(file_path):
             message = parts[-1] if len(parts) > 8 else "-"
             logs.append({"ip": ip, "endpoint": endpoint, "status": status_code, "message": message})
     return logs
+
+def count_requests_by_ip(logs):
+    """
+    Count the number of requests per IP address.
+    """
+    ip_counts = Counter(log["ip"] for log in logs)
+    return sorted(ip_counts.items(), key=lambda x: x[1], reverse=True)
