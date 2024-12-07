@@ -58,3 +58,22 @@ def save_to_csv(ip_requests, endpoint, suspicious_activity, file_name):
         writer.writerow(["IP Address", "Failed Login Count"])
         writer.writerows(suspicious_activity)
 
+def display_results(ip_requests, endpoint, suspicious_activity):
+    """
+    Display the results in the terminal.
+    """
+    print("Requests per IP Address:")
+    print(f"{'IP Address':<20}{'Request Count'}")
+    for ip, count in ip_requests:
+        print(f"{ip:<20}{count}")
+    print()
+
+    print("Most Frequently Accessed Endpoint:")
+    print(f"{endpoint[0]} (Accessed {endpoint[1]} times)")
+    print()
+
+    print("Suspicious Activity Detected:")
+    print(f"{'IP Address':<20}{'Failed Login Attempts'}")
+    for ip, count in suspicious_activity:
+        print(f"{ip:<20}{count}")
+    print()
